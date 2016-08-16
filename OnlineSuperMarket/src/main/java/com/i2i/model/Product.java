@@ -176,7 +176,7 @@ public class Product {
 		this.subcategory = subcategory;
 	}
 
-	@OneToMany(cascade={CascadeType.ALL},fetch = FetchType.LAZY)
+	@OneToMany(cascade={CascadeType.PERSIST},fetch = FetchType.LAZY)
 	@JoinColumn(name="productId")
 	public Set<Cart> getCarts() {
 		return carts;

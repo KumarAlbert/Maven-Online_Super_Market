@@ -46,9 +46,9 @@
     create table Cart (
         id integer not null,
         createdAt datetime,
-        createdBy integer,
+        createdBy bigint,
         modifiedAt datetime,
-        modifiedBy integer,
+        modifiedBy bigint,
         quantity integer,
         total double precision,
         productId integer,
@@ -90,7 +90,7 @@
         paymentType varchar(255),
         status bit,
         total double precision,
-        userId bigint not null,
+        userId bigint,
         primary key (id)
     ) ENGINE=InnoDB;
 

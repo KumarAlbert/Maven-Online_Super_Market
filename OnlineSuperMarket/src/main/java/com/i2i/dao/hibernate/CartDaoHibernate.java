@@ -48,15 +48,15 @@ public class CartDaoHibernate extends GenericDaoHibernate<Cart, Long> implements
             session = getSession();
             transaction = session.beginTransaction();
             session.save(cart);
+        	session.flush();
             transaction.commit();
+            session.clear();
             return true;
         } catch (HibernateException e) {
         	e.printStackTrace();
             throw new ApplicationException("Some error occured while inserting details of Cart: "
                                             +cart.getId(),e);
-        } finally {
-        	session.flush();
-        }
+        } 
     }
     
     /**
@@ -147,16 +147,16 @@ public class CartDaoHibernate extends GenericDaoHibernate<Cart, Long> implements
         try {
             session = getSession();
         	System.out.println(cart);
+        	session.flush();
             transaction = session.beginTransaction();
             session.update(cart); 
             transaction.commit();
+            session.clear();
             return true;
         } catch (HibernateException e) {
             throw new ApplicationException("Some error occured while updating details of "+ 
             		                        cart.getId(),e); 
-        } finally {
-        	session.flush();
-        }
+        } 
     }
     
     /**
