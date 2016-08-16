@@ -34,8 +34,8 @@ public class Cart {
     private double totalPrice;
     private Timestamp createdAt;
     private Timestamp modifiedAt;
-    private int createdBy;
-    private int modifiedBy;
+    private long createdBy;
+    private long modifiedBy;
 
 	/**
 	 * 
@@ -54,7 +54,7 @@ public class Cart {
 	 * @param modifiedBy
 	 */
 	public Cart(PurchaseOrder purchaseOrder, Product product, int quantity, double totalPrice, java.sql.Timestamp createdAt,
-			Timestamp modifiedAt, int createdBy, int modifiedBy) {
+			Timestamp modifiedAt, long createdBy, long modifiedBy) {
 		this.purchaseOrder= purchaseOrder;
 		this.product = product;
 		this.quantity = quantity;
@@ -122,20 +122,20 @@ public class Cart {
 	}
 
 	@Column(name="createdBy")
-	public int getCreatedBy() {
+	public long getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreatedBy(int createdBy) {
+	public void setCreatedBy(long createdBy) {
 		this.createdBy = createdBy;
 	}
 
 	@Column(name="modifiedBy")
-	public int getModifiedBy() {
+	public long getModifiedBy() {
 		return modifiedBy;
 	}
 
-	public void setModifiedBy(int modifiedBy) {
+	public void setModifiedBy(long modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
 

@@ -119,7 +119,7 @@ function productValidation() {
 		    		
 		    		</form>
              		 <form method="POST" action="/product"><h4>
-             		 <input name="fruit" value="<c:out value="${product.name}"/>" type="hidden"/>
+             		 <input name="productName" value="<c:out value="${product.name}"/>" type="hidden"/>
              		 <button type="submit" class="btn btn-link"><c:out value="${product.name}"/></button></h4></form>
           			</div>
         </div>

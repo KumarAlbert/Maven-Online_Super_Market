@@ -96,6 +96,8 @@ public class ProductDaoHibernate extends GenericDaoHibernate<Product, Long> impl
 		Session session = null;
         try {
     		session = getSession();
+    		System.out.println(name);
+    		session.flush();
     		transaction = session.beginTransaction();
             String sql = "SELECT * FROM Product WHERE name = :name";
             SQLQuery query = session.createSQLQuery(sql);
@@ -105,14 +107,13 @@ public class ProductDaoHibernate extends GenericDaoHibernate<Product, Long> impl
             Product productFromDao = (Product)object;
         	System.out.println(productFromDao);
             transaction.commit();
+            session.clear();
             return productFromDao;
          } catch (HibernateException e) {
         	 e.printStackTrace();
             throw new ApplicationException("Some error occured while viewing details of "
                                             +name,e); 
-        } finally {
-        	session.flush();
-        }  
+        }
     }
     
     /**

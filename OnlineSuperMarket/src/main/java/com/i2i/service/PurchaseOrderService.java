@@ -48,8 +48,10 @@ public class PurchaseOrderService {
         Timestamp modifiedAt = null;
         long modifiedBy = 0;
         int count = 0;
+        System.out.println(user);
         PurchaseOrder purchaseOrder = new PurchaseOrder(user, total, paymentType, status, createdAt,
 				modifiedAt, createdBy, modifiedBy);
+        System.out.println(purchaseOrder);
         purchaseOrderDao.insertPurchaseOrder(purchaseOrder);
         List<PurchaseOrder> purchaseOrders = getPurchaseOrderDetails();
         count = purchaseOrders.size();

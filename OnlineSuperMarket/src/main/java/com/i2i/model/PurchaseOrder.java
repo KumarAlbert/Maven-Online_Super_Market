@@ -29,8 +29,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name="PurchaseOrder")
 public class PurchaseOrder {
-	
-    private int id;
+
+	private int id;
     private User user;
     private double total;
     private String paymentType;
@@ -89,31 +89,6 @@ public class PurchaseOrder {
 		this.modifiedAt = modifiedAt;
 		this.createdBy = createdBy;
 		this.modifiedBy = modifiedBy;
-	}
-
-
-	/**
-	 * @param user
-	 * @param total
-	 * @param paymentType
-	 * @param status
-	 * @param createdAt
-	 * @param modifiedAt
-	 * @param createdBy
-	 * @param modifiedBy
-	 * @param carts
-	 */
-	public PurchaseOrder(User user, double total, String paymentType, boolean status, Timestamp createdAt, Timestamp modifiedAt,
-			long createdBy, long modifiedBy, Set<Cart> carts) {
-		this.user = user;
-		this.total = total;
-		this.paymentType = paymentType;
-		this.status = status;
-		this.createdAt = createdAt;
-		this.modifiedAt = modifiedAt;
-		this.createdBy = createdBy;
-		this.modifiedBy = modifiedBy;
-		this.carts = carts;
 	}
 
 
@@ -192,7 +167,7 @@ public class PurchaseOrder {
 	}
 
 	@ManyToOne
-	@JoinColumn(name="userId", nullable=false)
+	@JoinColumn(name="userId")
 	public User getUser() {
 		return user;
 	}
@@ -212,13 +187,13 @@ public class PurchaseOrder {
 	public void setCarts(Set<Cart> carts) {
 		this.carts = carts;
 	}
-
-
-	@Override
-	public String toString() {
-		return "PurchaseOrder [id=" + id + ", total=" + total + ", paymentType=" + paymentType
-				+ ", status=" + status + ", createdAt=" + createdAt + ", modifiedAt=" + modifiedAt + ", createdBy="
-				+ createdBy + ", modifiedBy=" + modifiedBy + "]";
-	}
 	
+    @Override
+	public String toString() {
+		return "PurchaseOrder [id=" + id + ", user=" + user + ", total=" + total + ", paymentType=" + paymentType
+				+ ", status=" + status + ", createdAt=" + createdAt + ", modifiedAt=" + modifiedAt + ", createdBy="
+				+ createdBy + ", modifiedBy=" + modifiedBy + ", carts=" + carts + "]";
+	}
+
+
 }

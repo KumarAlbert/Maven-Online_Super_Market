@@ -43,15 +43,18 @@ public class PurchaseOrderDaoHibernate extends GenericDaoHibernate<PurchaseOrder
 	    Session session = null;
         try {
             session = getSession();
+	        session.flush();
 	        transaction = session.beginTransaction();
+	        System.out.println(purchaseOrder);
 	        session.save(purchaseOrder);
+	        System.out.println(session.save(purchaseOrder));
 	        transaction.commit();
+	        session.clear();
 	        return true;
 	    } catch (HibernateException e) {
+	    	e.printStackTrace();
 	        throw new ApplicationException("Some error occured while inserting details of Cart: "
 	                                        +purchaseOrder.getId(),e);
-	    } finally {
-	    	 session.flush();
 	    }
 	}
 	    
