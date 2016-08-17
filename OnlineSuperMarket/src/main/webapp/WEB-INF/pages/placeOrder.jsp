@@ -37,7 +37,7 @@
 </c:forEach>
 </table>
 <h2 style="margin-left: 447px;">Estimated Total = <c:out value="${total}"/></h2>
-<form method="POST" action="confirmOrder.html">
+<form method="POST" action="redirectPayment.html">
 <input name="total" id="total" value="<c:out value="${total}"/>" type="hidden"/>
 <h3 style="margin-left: 447px;">Payment Type:</h3>
 <select class="btn btn-info" style="margin-left: 480px;height: 43px;width: 232px;padding-left: 66px;padding-right: 0px;margin-bottom: 0px;" name="paymentType" >

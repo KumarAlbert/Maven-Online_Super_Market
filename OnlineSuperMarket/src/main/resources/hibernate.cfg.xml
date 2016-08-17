@@ -13,5 +13,6 @@
         <mapping class="com.i2i.model.Product"/>
         <mapping class="com.i2i.model.Cart"/>
         <mapping class="com.i2i.model.PurchaseOrder"/>               
+        <mapping class="com.i2i.model.Payment"/>               
     </session-factory>
 </hibernate-configuration>
