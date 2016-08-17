@@ -5,6 +5,7 @@ import com.i2i.dao.SearchException;
 import com.i2i.exception.ApplicationException;
 import com.i2i.service.CartService;
 import com.i2i.service.CategoryService;
+import com.i2i.service.PaymentService;
 import com.i2i.service.ProductService;
 import com.i2i.service.PurchaseOrderService;
 import com.i2i.service.SubcategoryService;
@@ -22,6 +23,7 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 
 import com.i2i.model.Cart;
+import com.i2i.model.Payment;
 import com.i2i.model.Product;
 import com.i2i.model.Role;
 import com.i2i.model.Subcategory;
@@ -64,6 +66,9 @@ public class UserController {
 	ProductService productService;
 	@Autowired
 	CartService cartService;
+	
+	@Autowired
+	PaymentService paymentService;
 	
 	@Autowired
 	PurchaseOrderService purchaseOrderService;
@@ -414,6 +419,26 @@ public class UserController {
 	}
 	
 	/**
+	 * <p>This method used to redirect request to update payment</p>
+	 * @return ModelAndView It returns model for response.
+	 */
+	@RequestMapping("/redirectPayment")
+	public ModelAndView redirectToPaymentGateway(){
+		return new ModelAndView("payment");
+	}
+	
+	
+	@RequestMapping("/payment")
+	public ModelAndView paymentDetails(Payment payment){
+		try {
+		paymentService.addPaymentDetails(payment);
+		} catch (ApplicationException e) {
+			e.printStackTrace();
+		}
+		return new ModelAndView("Success");
+	}
+	
+	/**
 	 * <p>This method used to redirect request to delete subcategory</p>
 	 * @return  ModelAndView It returns model for response.
 	 */
@@ -720,4 +745,5 @@ public class UserController {
 		}
 		return new ModelAndView("adminHome");
 	}
+	
 }
