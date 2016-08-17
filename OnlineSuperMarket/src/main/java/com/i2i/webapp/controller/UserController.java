@@ -69,7 +69,7 @@ public class UserController {
 	PurchaseOrderService purchaseOrderService;
 	
 	private Cart cart = null;
-	private User user = null;
+	private User user = new User();
 	private List<Product> products = null;
 	private List<Product> productFilter = null;
 	private List<Cart> cartList = null;
@@ -93,37 +93,44 @@ public class UserController {
     }
     
 	/**
+	 * <p> This method used to redirect to home page.</p>
+	 * @param user It holds user object.
+	 * @param result It holds result of request page.
+	 * @return ModelAndView It returns model for response.
+	 */
+	@RequestMapping("/home")
+	public ModelAndView gethome(final HttpServletRequest request) {
+		String userName = request.getRemoteUser();
+		System.out.println(userName);
+		user = userService.getUserByUsername(userName);
+		System.out.println(user);
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("user", user);
+		if(null != user){
+			Set<Role> roles = user.getRoles();
+			for(Role role : roles){
+				if("ROLE_ADMIN".equals(role.getName())){
+					return new ModelAndView("adminHome",model);
+				}
+			}
+		}
+		return new ModelAndView("home",model);
+	}
+	/**
 	 * <P> This method used redirect the request to home page </p>
 	 * @return ModelAndView It returns model for response.
 	 */
 	@RequestMapping("/homePage")
-	public ModelAndView homePage(final HttpServletRequest request) {
+	public ModelAndView homePage() {
 	    try {
-	    	String userName = request.getRemoteUser();
-			System.out.println(userName);
-			user = userService.getUserByUsername(userName);
 	        products = productService.getProductDetails();
 	        System.out.println(products);
-	        if(null != user){
-	        	Set<Role> roles = user.getRoles();
-	        	for(Role role : roles){
-	        		if("ROLE_ADMIN".equals(role.getName())){
-	        			return new ModelAndView("adminHome");
-	        		}
-	        	}
-	        }
 	    } catch(ApplicationException e) {
 	    	e.printStackTrace();
 	    }
 		return new ModelAndView("homePage");
 	}
 	
-	@RequestMapping("/AdminHome")
-	public ModelAndView redirectAdminPage() {
-        System.out.println("admin page");
-	        //products = productService.getProductDetails();
-		return new ModelAndView("adminHome");
-	}
 	
 	/**
 	 * <p> This method used redirect the request to product filter page </p>
@@ -136,6 +143,24 @@ public class UserController {
 		for(Product product : products) {
 			Subcategory subcategory = product.getSubcategory();
 			if("Fruits".equals(subcategory.getName())) {
+				productFilter.add(product);
+			}
+		}
+		model.put("productFilter", productFilter);
+		return new ModelAndView("productFilter",model);
+	}
+	
+	/**
+	 * <p> This method used redirect the request to product filter page </p>
+	 * @return ModelAndView It returns model for response.
+	 */	
+	@RequestMapping("/vegtables")
+	public ModelAndView redirectToVegtables() {
+		Map<String, Object> model = new HashMap<String, Object>();
+		productFilter = new ArrayList<Product>();
+		for(Product product : products) {
+			Subcategory subcategory = product.getSubcategory();
+			if("Vegtables".equals(subcategory.getName())) {
 				productFilter.add(product);
 			}
 		}
@@ -415,7 +440,7 @@ public class UserController {
 		} catch(ApplicationException e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("deleteProduct");
+		return new ModelAndView("deleteProduct",model);
 	}
 	
 	/**
