@@ -5,7 +5,12 @@
     <meta name="menu" content="Login"/>
 </head>
 <body id="login">
-
+ <div id="header" class="well " style="background-color: #0059b3; color:white;font-size: 30px;padding-bottom: 1px;padding-top: 0px;width: 100%;height: 135px;">
+     <table><tr><td><img src="images/icon.png" style="height: 143px;width: 165px;"/></td>
+     <td style="width: 645px; "> 
+      <label style="color:white;font-size: 30px;font-style: italic;">
+      MK Groceries</label></td></tr>
+      </table></div>
 <form method="post" id="loginForm" action="<c:url value='/j_security_check'/>"
     onsubmit="saveUsername(this);return validateForm(this)" class="form-signin" autocomplete="off">
     <h2 class="form-signin-heading">
@@ -45,5 +50,4 @@
 <p><fmt:message key="login.passwordHint"/></p>
 
 <p><fmt:message key="updatePassword.requestRecoveryTokenLink"/></p>
-
 </body>

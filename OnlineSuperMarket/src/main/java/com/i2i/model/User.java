@@ -371,31 +371,13 @@ public class User extends BaseObject implements Serializable, UserDetails {
         return (username != null ? username.hashCode() : 0);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public String toString() {
-        ToStringBuilder sb = new ToStringBuilder(this, ToStringStyle.DEFAULT_STYLE)
-                .append("username", this.username)
-                .append("enabled", this.enabled)
-                .append("accountExpired", this.accountExpired)
-                .append("credentialsExpired", this.credentialsExpired)
-                .append("accountLocked", this.accountLocked);
-
-        if (roles != null) {
-            sb.append("Granted Authorities: ");
-
-            int i = 0;
-            for (Role role : roles) {
-                if (i > 0) {
-                    sb.append(", ");
-                }
-                sb.append(role.toString());
-                i++;
-            }
-        } else {
-            sb.append("No Granted Authorities");
-        }
-        return sb.toString();
-    }
+    @Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", confirmPassword="
+				+ confirmPassword + ", passwordHint=" + passwordHint + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", email=" + email + ", phoneNumber=" + phoneNumber + ", website=" + website + ", address="
+				+ address + ", version=" + version + ", roles=" + roles + ", enabled=" + enabled + ", accountExpired="
+				+ accountExpired + ", accountLocked=" + accountLocked + ", credentialsExpired=" + credentialsExpired
+				+ ", purchaseOrders=" + purchaseOrders + "]";
+	}
 }
