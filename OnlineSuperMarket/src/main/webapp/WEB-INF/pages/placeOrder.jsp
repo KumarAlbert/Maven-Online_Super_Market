@@ -31,7 +31,9 @@
 	padding-top: 1px; width: 125px; margin-left: 0px;"><i >Remove</i></button>
 </form></td>
 <td><c:out value="${cart.quantity}"/></td>
-<td><c:out value="${user.address}"/></td>
+<td><p>Country :<c:out value="${user.address.country}"/><br>Address:<c:out value="${user.address.address}"/><br>
+          Province :<c:out value="${user.address.province}"/><br>Postal Code :<c:out value="${user.address.postalCode}"/><br>
+          City :<c:out value="${user.address.city}"/><br></p></td>
 <td><c:out value="${cart.totalPrice}"/></td>
 </tr>
 </c:forEach>

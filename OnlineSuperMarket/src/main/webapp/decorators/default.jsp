@@ -12,13 +12,10 @@
     <t:assets type="css"/>
     <decorator:head/>
 </head>
-<body<decorator:getProperty property="body.id" writeEntireProperty="true"/>
+<body style="padding-top: 0px;"<decorator:getProperty property="body.id" writeEntireProperty="true"/>
 <decorator:getProperty property="body.class" writeEntireProperty="true"/>>
     <c:set var="currentMenu" scope="request"><decorator:getProperty property="meta.menu"/></c:set>
-
-
             <decorator:body/>
-
             <c:if test="${currentMenu == 'AdminMenu'}">
                 <div class="col-sm-2">
                 <menu:useMenuDisplayer name="Velocity" config="navlistMenu.vm" permissions="rolesAdapter">

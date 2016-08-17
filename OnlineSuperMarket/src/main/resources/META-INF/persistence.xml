@@ -5,6 +5,13 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>com.i2i.model.User</class>
         <class>com.i2i.model.Role</class>
+                <class>com.i2i.model.Category</class>
+                <class>com.i2i.model.Subcategory</class>
+                <class>com.i2i.model.Product</class>
+                <class>com.i2i.model.Cart</class>
+                        <class>com.i2i.model.PurchaseOrder</class>
+                
+        
     </persistence-unit>
 
     <!-- WARNING: This file's file original source is at web/common/src/main/resources/META-INF. The
