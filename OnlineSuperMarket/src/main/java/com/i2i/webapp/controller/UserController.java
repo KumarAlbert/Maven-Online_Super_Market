@@ -431,7 +431,8 @@ public class UserController {
 	@RequestMapping("/payment")
 	public ModelAndView paymentDetails(Payment payment){
 		try {
-		paymentService.addPaymentDetails(payment);
+			System.out.println(payment);
+			paymentService.addPaymentDetails(payment);
 		} catch (ApplicationException e) {
 			e.printStackTrace();
 		}

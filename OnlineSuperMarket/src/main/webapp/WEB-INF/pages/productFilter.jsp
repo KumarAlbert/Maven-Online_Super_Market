@@ -100,8 +100,8 @@ function productValidation() {
 </div>      		</div>
       		<div class="row">
       		 <c:forEach items="${productFilter}" var="product">
-        		<div class="col-sm-3" style="padding-left: 50px;">
-          			<div class="panel" style="width: 25%; padding-right: 0px;">
+        		<div class="col-sm-3" style="padding-left: 50px;height: 376px;width: 199px;">
+          			<div class="panel" style="width: 25%; padding-right: 0px;" >
              		 <img alt="images/banana.jpg" src="<c:out value="${product.imageUrl}"/>" height="100px" width="100px"/>
              		 <i><c:out value="${product.name}"/></i>
              		 <i><c:out value="${product.description}"/></i>
