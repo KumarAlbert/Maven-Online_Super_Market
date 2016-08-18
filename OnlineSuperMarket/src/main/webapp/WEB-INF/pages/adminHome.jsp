@@ -22,12 +22,7 @@
       <input name="user" id="user"value="${pageContext.request.remoteUser}" type="hidden"/>
     <div class="col-sm-3">
     
-<nav class="navbar" style="
-    margin-bottom: 0px;
-    width: 0px;
-    border-left-width: 0px;
-    border-right-width: 0px;
-">
+<nav class="navbar" style=" margin-bottom: 0px;    width: 0px;    border-left-width: 0px;    border-right-width: 0px;">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left: 0px;padding-top: 0px;padding-right: 0px;
         padding-bottom: 0px;    width: 0px;    height: 0px;">
         <p style="font-family: sans-serif;font-size:medium;color:white;margin-left: 103px;margin-top: 35px;">${pageContext.request.remoteUser}</p></a>

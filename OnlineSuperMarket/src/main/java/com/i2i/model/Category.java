@@ -115,7 +115,7 @@ public class Category {
 	public void setModifiedAt(Timestamp modifiedAt) {
 		this.modifiedAt = modifiedAt;
 	}
-/*    
+    
 	@OneToMany(cascade={CascadeType.ALL},fetch = FetchType.LAZY)
 	@JoinColumn(name="categoryId")
 	public Set<Subcategory> getSubcategories() {
@@ -124,7 +124,7 @@ public class Category {
 	public void setSubcategories(Set<Subcategory> subcategories) {
 		this.subcategories = subcategories;
 	}
-	*/
+	
 	@Override
 	public String toString() {
 		return "Category [id=" + id + ", name=" + name + ", createdBy=" + createdBy + ", createdAt=" + createdAt

@@ -1,3 +1,5 @@
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,51 +11,49 @@
 <title>Payment</title>
 </head>
 <body>
-<div class="alert">
+<div class="alert alert-success">
   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
   <strong>Info!</strong>Please select how you would like to pay.
 </div>
-<div class="row">
-<div class="col-sm-12">
-<div class="panel panel-primary">
-  <div class="panel-heading"  style="background-color: #0059b3;">Payment Gateway</div>
+<div class="panel ">
  	<div class="panel-body">
-	<form:form method="POST" modelAttribute="payment" action="payment.html">
-	<div class="row">
-	<div class="col-sm-3">
-  		<div class="form-group">
+	<form:form method="POST"  modelAttribute="payment" action="/payment" >
+  		<div class="form-inline">
     		<label >Payment Method</label>
-                <select name="choice" style="margin-left: 22px; padding-left: 22px;">
-                    <option value="null">--Select Payment Type--</option>
-                    <option value="creditCard">Credit Card</option>
-                    <option value="netBanking">Net Banking</option>
-                    <option value="debitCard">Debit Card</option>
-                </select>
-  		</div>
-  		<div class="form-group">
+               <select class="btn btn-info"  name="paymentType"style="    margin-left: 30px;width: 204px;" >
+ 	 	<option  id="paymentType" value="Credit Card">Credit Card</option>
+ 		 <option  id="paymentType" value="Debit Card">Debit Card</option>
+ 		 <option  id="paymentType" value="Net Bank">Net Bank</option>
+		</select>
+  		</div><br>
+  		<div class="form-inline">
     		<label >Card Number</label>
-    		<input name="cardNumber" type="text" class="form-control" required="required"  placeholder="Card Number" id="cardNumber"/>
-  		</div>
-  		<div class="form-group">
-    		<label >Name On Card</label>
+    		<input style=" margin-left: 56px;" name="cardNumber" type="text" class="form-control" required="required"  placeholder="Card Number" id="cardNumber"/>
+  		</div><br>
+  		<div class="form-inline">
+    		<label >Name Of Card Holder</label>
     		<input name="nameOnCard" type="text" class="form-control" required="required"  placeholder="Name On Card" id="nameOnCard"/>
-  		</div>
-  		<div class="form-group">
-    		<label>Expiry Date</label>
-    		      <div class="col-xs-2">
-                      <label>month</label>
-                      <input style="margin-left: 119px; margin-top: -20px;" class="form-control" id="month" type="number">
-                      </div>
-    		      <div class="col-xs-2">
-                      <label>year</label>
-                      <input style="margin-left: 133px; margin-top: 1px;" class="form-control" id="year" type="number">
-                      </div>
-  		</div>
-  		<div class="form-group">
-    		<label >CVV</label>
-    		<input name="cvv"type="integer" class="form-control" required="required" placeholder="Security code behind your card" id="cvv"/>
-  		</div>
-                    <input type="image" value="submit" src="images/pay.png" alt="submit Button" onMouseOver="this.src='pay.png'">
-  		</div>
+  		</div><br>
+  		<div class="form-inline">
+            <label>Expiry Date</label>
+                  <input type="text" placeholder="Month" style="width: 60px;margin-left: 68px;padding-left: 5px;padding-right: 5px;"  class="form-control" style="width: 60px;" id="month" >                  
+
+                  <input  type="text" placeholder="Year" class="form-control"style="width: 60px;" id="year" type="integer">
+  		</div><br>
+  		<div class="form-inline">
+        <label>CVV</label>
+        <input type="text" style="margin-left: 116px;width: 232px;" name="cvv" class="form-control" required="required" placeholder="Security code behind your card" id="cvv" >  		
+        </div><br>
+        <input type="image" src="images/pay.png"  style="margin-left: 145px;" value="submit">     
 	</form:form>
-	</div></div></div>
+	</div></div>
+	<div class="row">
+   <div class="col-sm-12">
+   <div class="panel">
+ 	    <div class="col-sm-3"> 
+<img src="images/payment.jpg" class="img-rounded" style="width:100%;height: 186px;" alt="Cinque Terre" >
+            </div>
+       <div class="col-sm-3"> 
+<img src="images/paypal.png" class="img-rounded" style="width:100%;height: 186px;" alt="Cinque Terre" >
+            </div>
+       </div></div></div>

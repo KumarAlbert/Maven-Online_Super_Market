@@ -8,6 +8,15 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  <script>
+process = function()
+ {
+    window.open('http://localhost:8080/redirectPayment', 'popup', 'width=420,height=640,resizeable=yes');
+    document.login.setAttribute('target', 'popup');
+    document.login.setAttribute('onsubmit', '');
+    document.login.submit();
+ };
+</script>
 </head>
 <body>
 <c:if test="${!empty user}">
@@ -39,15 +48,8 @@
 </c:forEach>
 </table>
 <h2 style="margin-left: 447px;">Estimated Total = <c:out value="${total}"/></h2>
-<form method="POST" action="redirectPayment.html">
+<form method="POST" action="/redirectPayment" target="_top">
 <input name="total" id="total" value="<c:out value="${total}"/>" type="hidden"/>
-<h3 style="margin-left: 447px;">Payment Type:</h3>
-<select class="btn btn-info" style="margin-left: 480px;height: 43px;width: 232px;padding-left: 66px;padding-right: 0px;margin-bottom: 0px;" name="paymentType" >
-  <option  id="paymentType" value="Credit Card">Credit Card</option>
-  <option  id="paymentType" value="Debit Card">Debit Card</option>
-  <option  id="paymentType" value="Net Bank">Net Bank</option>
-  <option id="paymentType" value="Cash On Delivery">Cash On Delivery</option>
-</select>
 <button type="submit" class="btn " style="background-color: orange;margin-left: 478px;
 height: 40px;width: 233px;margin-top: 20px;">CONFIRM ORDER</button>
 </form>
